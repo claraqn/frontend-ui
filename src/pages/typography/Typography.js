@@ -1,157 +1,201 @@
 import React from "react";
-import { Row, Col } from "reactstrap";
+import {
+  Row,
+  Col,
+  Table,
+  Progress,
+  Button,
+  UncontrolledButtonDropdown,
+  DropdownMenu,
+  DropdownToggle,
+  DropdownItem,
+  Badge,
+} from "reactstrap";
 
 import Widget from "../../components/Widget";
+import s from "./Typography.module.scss";
 
-const Typography = () => (
-  <div>
-    <h1 className="page-title">
-      Typography - <span className="fw-semi-bold">Texts & Display</span>
-    </h1>
-    <Row>
-      <Col xs={12} lg={6}>
-        <Widget
-          title={
-            <h5>
-              Headings{" "}
-              <small className="text-muted">Default and customized</small>
-            </h5>
-          }
-          close
-          collapse
-        >
-          <h4>Default headings</h4>
-          <p>Basic headings for everyday use</p>
-          <div className="widget-padding-md w-100 h-100 text-left border rounded">
-            <Row>
-              <Col sm={6}>
-                <h1>h1. Heading</h1>
-                <h2>h2. Heading</h2>
-                <h3>h3. Heading</h3>
-                <h4>h4. Heading</h4>
-                <h5>h5. Heading</h5>
-                <h6>h6. Heading</h6>
-              </Col>
-              <Col sm={6}>
-                <h1 className="text-danger">h1. Heading</h1>
-                <h2 className="text-warning">h2. Heading</h2>
-                <h3 className="text-lime">h3. Heading</h3>
-                <h4 className="text-success">h4. Heading</h4>
-                <h5 className="text-primary">h5. Heading</h5>
-                <h6 className="text-info">h6. Heading</h6>
-              </Col>
-            </Row>
-          </div>
-          <h4 className="mt-5">Customized headings</h4>
-          <p>Enhanced with additional text</p>
-          <div className="widget-padding-md w-100 h-100 text-left border rounded">
-            <h3>
-              Headings <small>And some clarification text</small>
-            </h3>
-          </div>
-          <h4 className="mt-5">Display</h4>
-          <p>Headings to stand out</p>
-          <div className="widget-padding-md w-100 h-100 text-left border rounded overflow-auto">
-            <h1 className="display-1">Display 1</h1>
-            <h1 className="display-2">Display 2</h1>
-            <h1 className="display-3">Display 3</h1>
-            <h1 className="display-4">Display 4</h1>
-          </div>
-          <h4 className="mt-5">Lead</h4>
-          <p>
-            Make a paragraph stand out by adding{" "}
-            <code className="highlighter-rouge">.lead</code>.
-          </p>
-          <div className="widget-padding-md w-100 h-100 text-left border rounded">
-            <p className="lead">
-              Light Blue Template is admin dashboard template built with
-              Bootstrap
-            </p>
-          </div>
-        </Widget>
-      </Col>
-      <Col xs={12} lg={6}>
-        <Widget
-          title={
-            <h5>
-              Body texts <small className="text-muted">Variations</small>
-            </h5>
-          }
-          close
-          collapse
-        >
-          <h4>Basic texts</h4>
-          <p>Styling for common texts</p>
-          <div className="widget-padding-md w-100 h-100 text-left border rounded">
-            <p>
-              You can use the mark tag to <mark>highlight</mark> text.
-            </p>
-            <p>
-              <del>
-                This line of text is meant to be treated as deleted text.
-              </del>
-            </p>
-            <p>
-              <ins>
-                This line of text is meant to be treated as an addition to the
-                document.
-              </ins>
-            </p>
-            <p>
-              <small>
-                This line of text is meant to be treated as fine print.
-              </small>
-            </p>
-            <p>
-              <em>This line rendered as italicized text.</em>
-            </p>
-            <p>
-              <strong>This line rendered as bold text.</strong>
-            </p>
-          </div>
-          <h4 className="mt-5">Font weights</h4>
-          <p>Various font weights supported</p>
-          <div className="widget-padding-md w-100 h-100 text-left border rounded">
-            <p>Thin (default) font weight</p>
-            <p className="fw-normal">Normal font weight</p>
-            <p className="fw-semi-bold">
-              Semi bold to empasize important thing
-            </p>
-            <p className="fw-bold">Bold font as a high priority</p>
-          </div>
-          <h4 className="mt-5">Colors</h4>
-          <p>Bootstrap state colors can be applied to texts too</p>
-          <div className="widget-padding-md w-100 h-100 text-left border rounded">
-            <p className="text-danger">Some danger text</p>
-            <p className="text-warning">Some warning text</p>
-            <p className="text-success">Some succes text</p>
-            <p className="text-primary">Some primary text</p>
-            <p className="text-info">Some info text</p>
-          </div>
-          <h4 className="mt-5">Blockquotes</h4>
-          <p>Citing someone is really easy</p>
-          <div className="widget-padding-md w-100 h-100 text-left border rounded">
-            <blockquote className="blockquote">
-              <p>
-                Don&apos;t get set into one form, adapt it and build your own,
-                and let it grow, be like water. Empty your mind, be formless,
-                shapeless — like water. Now you put water in a cup, it becomes
-                the cup; You put water into a bottle it becomes the bottle; You
-                put it in a teapot it becomes the teapot. Now water can flow or
-                it can crash. Be water, my friend.
-              </p>
-              <footer className="blockquote-footer">
-                Bruce Lee in{" "}
-                <cite title="A Warrior's Journey">
-                  A Warrior&apos;s Journey
-                </cite>
-              </footer>
-            </blockquote>
-          </div>
-        </Widget>
-      </Col>
-    </Row>
-  </div>
-);
+class Static extends React.Component {
+  constructor(props) {
+    super(props);
 
-export default Typography;
+    this.state = {
+      tableStyles: [
+        {
+          id: 1,
+          picture: require("../../assets/tables/1.png"), // eslint-disable-line global-require
+          description: "Palo Alto",
+          info: {
+            type: "JPEG",
+            dimensions: "200x150",
+          },
+          date: new Date("September 14, 2012"),
+          size: "45.6 KB",
+          progress: {
+            percent: 29,
+            colorClass: "success",
+          },
+        },
+        {
+          id: 2,
+          picture: require("../../assets/tables/2.png"), // eslint-disable-line global-require
+          description: "The Sky",
+          info: {
+            type: "PSD",
+            dimensions: "2400x1455",
+          },
+          date: new Date("November 14, 2012"),
+          size: "15.3 MB",
+          progress: {
+            percent: 33,
+            colorClass: "warning",
+          },
+        },
+        {
+          id: 3,
+          picture: require("../../assets/tables/3.png"), // eslint-disable-line global-require
+          description: "Down the road",
+          label: {
+            colorClass: "primary",
+            text: "INFO!",
+          },
+          info: {
+            type: "JPEG",
+            dimensions: "200x150",
+          },
+          date: new Date("September 14, 2012"),
+          size: "49.0 KB",
+          progress: {
+            percent: 38,
+            colorClass: "inverse",
+          },
+        },
+      ],
+      checkboxes1: [false, true, false, false],
+      checkboxes2: [false, false, false, false, false, false],
+      checkboxes3: [false, false, false, false, false, false],
+    };
+
+    this.checkAll = this.checkAll.bind(this);
+  }
+
+  parseDate(date) {
+    this.dateSet = date.toDateString().split(" ");
+
+    return `${date.toLocaleString("en-us", { month: "long" })} ${
+      this.dateSet[2]
+    }, ${this.dateSet[3]}`;
+  }
+
+  checkAll(ev, checkbox) {
+    const checkboxArr = new Array(this.state[checkbox].length).fill(
+      ev.target.checked
+    );
+    this.setState({
+      [checkbox]: checkboxArr,
+    });
+  }
+
+  changeCheck(ev, checkbox, id) {
+    //eslint-disable-next-line
+    this.state[checkbox][id] = ev.target.checked;
+    if (!ev.target.checked) {
+      //eslint-disable-next-line
+      this.state[checkbox][0] = false;
+    }
+    this.setState({
+      [checkbox]: this.state[checkbox],
+    });
+  }
+
+  render() {
+    return (
+      <div className={s.root}>
+        <h1 className="page-title">
+        <span className="fw-semi-bold">Favorites</span> Parking Lot <span className="fw-semi-bold">List</span>
+          <small className={s.small}> 즐겨찾는 주차장 목록을 확인합니다.</small>
+        </h1>
+        <Row>
+          <Col>
+            <Widget
+              title={
+                <h5>
+                  사용자의 즐겨찾는 주차장 목록<span className="fw-semi-bold"></span>
+                </h5>
+              }
+              bodyClass={s.mainTableWidget}
+            >
+              <Table striped>
+                <thead>
+                  <tr className="fs-sm">
+                    <th className="hidden-sm-down">#</th>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th className="hidden-sm-down">Location</th>
+                    <th className="hidden-sm-down">Total number of parking spaces</th>
+                    <th className="hidden-sm-down">Favorite</th>
+                    <th className="hidden-sm-down">Check the number of vacancy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.tableStyles.map((row) => (
+                    <tr key={row.id}>
+                      <td>{row.id}</td>
+                      <td>
+                        <img
+                          className="img-rounded"
+                          src={row.picture}
+                          alt=""
+                          height="50"
+                        />
+                      </td>
+                      <td>
+                        {row.description}
+                        {row.label && (
+                          <div>
+                            <Badge color={row.label.colorClass}>
+                              {row.label.text}
+                            </Badge>
+                          </div>
+                        )}
+                      </td>
+                      <td>
+                        <p className="mb-0">
+                          <small>
+                            Type:
+                            <span className="text-muted fw-semi-bold">
+                              &nbsp; {row.info.type}
+                            </span>
+                          </small>
+                        </p>
+                        <p>
+                          <small>
+                            Dimensions:
+                            <span className="text-muted fw-semi-bold">
+                              &nbsp; {row.info.dimensions}
+                            </span>
+                          </small>
+                        </p>
+                      </td>
+                      <td className="text-muted">{this.parseDate(row.date)}</td>
+                      <td className="text-muted">{row.size}</td>
+                      <td className="width-150">
+                        <Progress
+                          color={row.progress.colorClass}
+                          value={row.progress.percent}
+                          className="progress-sm mb-xs"
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </Widget>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
+
+export default Static;

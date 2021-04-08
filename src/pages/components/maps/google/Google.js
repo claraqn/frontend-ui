@@ -1,22 +1,9 @@
 import React from 'react';
-import {
-  withGoogleMap,
-  withScriptjs,
-  GoogleMap,
-  Marker,
-} from 'react-google-maps';
 import Widget from '../../../../components/Widget';
 
 import s from './Google.module.scss';
 
-const BasicMap = withScriptjs(withGoogleMap(() =>
-  <GoogleMap
-    defaultZoom={12}
-    defaultCenter={{ lat: parseFloat(-37.813179), lng: parseFloat(144.950259) }}
-  >
-    <Marker position={{ lat: -37.813179, lng: 144.950259 }} />
-  </GoogleMap>,
-));
+import howToUse from "../../../../assets/howToUse/main.PNG";
 
 class Maps extends React.Component {
 
@@ -24,20 +11,15 @@ class Maps extends React.Component {
     return (
       <div>
         <h1 className="page-title">
-          Google <span className="fw-semi-bold">Maps</span>
+          How to <span className="fw-semi-bold"> use</span> our Service
+          <small className={s.small}> 서비스 사용법에 대한 설명입니다.</small>
         </h1>
         <Widget
-          title={<h4>Google Maps <small className="text-muted">Default and customized</small></h4>}
+          title={<h4>메인 화면 사이드바<small className="text-muted"> 원하는 서비스 선택</small></h4>}
           collapse close
         >
-          <div className={s.MapContainer}>
-            <BasicMap
-              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg"
-              loadingElement={<div style={{ height: 'inherit', width: 'inherit' }} />}
-              containerElement={<div style={{ height: 'inherit' }} />}
-              mapElement={<div style={{ height: 'inherit' }} />}
-            />
-          </div>
+          <img className={s.MapContainer} src={howToUse} alt="..."
+          />
         </Widget>
       </div>);
   }

@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Progress, Alert} from 'reactstrap';
 import {withRouter} from 'react-router-dom';
 import {dismissAlert} from '../../actions/alerts';
 import s from './Sidebar.module.scss';
@@ -78,42 +77,42 @@ class Sidebar extends React.Component {
                 }}
             >
                 <header className={s.logo}>
-                    <a href="https://demo.flatlogic.com/light-blue-react/">Light <span
-                        className="fw-bold">Blue</span></a>
+                    <a href="/app/main">Find <span
+                        className="fw-bold">Park vacancy</span></a>
                 </header>
                 <ul className={s.nav}>
                     <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}
-                        header="Dashboard"
+                        header="홈"
                         isHeader
                         iconName={<HomeIcon className={s.menuIcon} />}
                         link="/app/main"
                         index="main"
                     />
-                    <h5 className={[s.navTitle, s.groupTitle].join(' ')}>TEMPLATE</h5>
+                    <h5 className={[s.navTitle, s.groupTitle].join(' ')}>원하는 서비스 선택</h5>
                     <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}
-                        header="Typography"
+                        header="주차장 목록"
                         isHeader
                         iconName={<TypographyIcon className={s.menuIcon} />}
-                        link="/app/typography"
+                        link="/app/tables"
                         index="core"
                     />
                     <LinksGroup
                         onActiveSidebarItemChange={t => this.props.dispatch(changeActiveSidebarItem(t))}
                         activeItem={this.props.activeItem}
-                        header="Tables Basic"
+                        header="즐겨찾는 주차장"
                         isHeader
                         iconName={<TablesIcon className={s.menuIcon} />}
-                        link="/app/tables"
+                        link="/app/typography"
                         index="tables"
                     />
                     <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}
-                        header="Notifications"
+                        header="서비스 사용법"
                         isHeader
                         iconName={<NotificationsIcon className={s.menuIcon}/>}
                         link="/app/notifications"
@@ -122,71 +121,24 @@ class Sidebar extends React.Component {
                     <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}
-                        header="Components"
+                        header="사용자 정보"
                         isHeader
                         iconName={<ComponentsIcon className={s.menuIcon}/>}
-                        link="/app/components"
+                        link="/app/components/"
                         index="components"
                         childrenLinks={[
                             {
-                                header: 'Charts', link: '/app/components/charts',
+                                header: '로그인', link: '/app/components/charts',
                             },
                             {
-                                header: 'Icons', link: '/app/components/icons',
+                                header: '연동로그인', link: '/app/components/icons',
                             },
                             {
-                                header: 'Maps', link: '/app/components/maps',
+                                header: '회원가입', link: '/app/components/maps',
                             },
                         ]}
                     />
                 </ul>
-                <h5 className={s.navTitle}>
-                    LABELS
-                    {/* eslint-disable-next-line */}
-                </h5>
-                {/* eslint-disable */}
-                <ul className={s.sidebarLabels}>
-                    <li>
-                        <a href="#">
-                            <i className="fa fa-circle text-success mr-2"/>
-                            <span className={s.labelName}>My Recent</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i className="fa fa-circle text-primary mr-2"/>
-                            <span className={s.labelName}>Starred</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i className="fa fa-circle text-danger mr-2"/>
-                            <span className={s.labelName}>Background</span>
-                        </a>
-                    </li>
-                </ul>
-                {/* eslint-enable */}
-                <h5 className={s.navTitle}>
-                    PROJECTS
-                </h5>
-                <div className={s.sidebarAlerts}>
-                    {this.props.alertsList.map(alert => // eslint-disable-line
-                        <Alert
-                            key={alert.id}
-                            className={s.sidebarAlert} 
-                            color="transparent"
-                            isOpen={true} // eslint-disable-line
-                            toggle={() => {
-                                this.dismissAlert(alert.id);
-                            }}
-                        >
-                            <span>{alert.title}</span><br/>
-                            <Progress className={`bg-subtle-blue progress-xs mt-1`} color={alert.color}
-                                      value={alert.value}/>
-                            <span className={s.alertFooter}>{alert.footer}</span>
-                        </Alert>,
-                    )}
-                </div>
             </nav>
         );
     }

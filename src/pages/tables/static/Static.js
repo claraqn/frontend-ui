@@ -9,11 +9,8 @@ import {
   DropdownMenu,
   DropdownToggle,
   DropdownItem,
-  Input,
-  Label,
   Badge,
 } from "reactstrap";
-import { Sparklines, SparklinesBars } from "react-sparklines";
 
 import Widget from "../../../components/Widget";
 import s from "./Static.module.scss";
@@ -27,10 +24,14 @@ class Static extends React.Component {
         {
           id: 1,
           picture: require("../../../assets/tables/1.png"), // eslint-disable-line global-require
-          description: "Palo Alto",
+          description: "공대4호관 주차장",
           info: {
             type: "JPEG",
             dimensions: "200x150",
+          },
+          label: {
+            colorClass: "primary",
+            text: "Accessible",
           },
           date: new Date("September 14, 2012"),
           size: "45.6 KB",
@@ -42,7 +43,7 @@ class Static extends React.Component {
         {
           id: 2,
           picture: require("../../../assets/tables/2.png"), // eslint-disable-line global-require
-          description: "The Sky",
+          description: "공대2호관 주차장",
           info: {
             type: "PSD",
             dimensions: "2400x1455",
@@ -57,11 +58,8 @@ class Static extends React.Component {
         {
           id: 3,
           picture: require("../../../assets/tables/3.png"), // eslint-disable-line global-require
-          description: "Down the road",
-          label: {
-            colorClass: "primary",
-            text: "INFO!",
-          },
+          description: "본관 앞 주차장",
+          
           info: {
             type: "JPEG",
             dimensions: "200x150",
@@ -76,7 +74,7 @@ class Static extends React.Component {
         {
           id: 4,
           picture: require("../../../assets/tables/4.png"), // eslint-disable-line global-require
-          description: "The Edge",
+          description: "체육관 주차장",
           info: {
             type: "PNG",
             dimensions: "210x160",
@@ -91,7 +89,7 @@ class Static extends React.Component {
         {
           id: 5,
           picture: require("../../../assets/tables/5.png"), // eslint-disable-line global-require
-          description: "Fortress",
+          description: "정보통신원 주차장",
           info: {
             type: "JPEG",
             dimensions: "1452x1320",
@@ -144,19 +142,18 @@ class Static extends React.Component {
   render() {
     return (
       <div className={s.root}>
-        <h2 className="page-title">
-          Tables - <span className="fw-semi-bold">Static</span>
-        </h2>
+        <h1 className="page-title">
+          Parking Lot <span className="fw-semi-bold">List</span>
+          <small className={s.small}> 주차장 목록을 확인합니다.</small>
+        </h1>
         <Row>
           <Col>
             <Widget
               title={
                 <h5>
-                  Table <span className="fw-semi-bold">Styles</span>
+                  제주대학교 내 주차장 목록<span className="fw-semi-bold"></span>
                 </h5>
               }
-              settings
-              close
               bodyClass={s.mainTableWidget}
             >
               <Table striped>
@@ -164,11 +161,11 @@ class Static extends React.Component {
                   <tr className="fs-sm">
                     <th className="hidden-sm-down">#</th>
                     <th>Picture</th>
-                    <th>Description</th>
-                    <th className="hidden-sm-down">Info</th>
-                    <th className="hidden-sm-down">Date</th>
-                    <th className="hidden-sm-down">Size</th>
-                    <th className="hidden-sm-down">Status</th>
+                    <th>Name</th>
+                    <th className="hidden-sm-down">Location</th>
+                    <th className="hidden-sm-down">Number of parking spaces</th>
+                    <th className="hidden-sm-down">Favorite</th>
+                    <th className="hidden-sm-down">Check the number of vacancy</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -224,562 +221,6 @@ class Static extends React.Component {
                   ))}
                 </tbody>
               </Table>
-              <div className="clearfix">
-                <div className="float-right">
-                  <Button color="default" className="mr-2" size="sm">
-                    Send to...
-                  </Button>
-                  <UncontrolledButtonDropdown>
-                    <DropdownToggle
-                      color="inverse"
-                      className="mr-xs"
-                      size="sm"
-                      caret
-                    >
-                      Clear
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>Clear</DropdownItem>
-                      <DropdownItem>Move ...</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                      <DropdownItem divider />
-                      <DropdownItem>Separated link</DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledButtonDropdown>
-                </div>
-                <p>Basic table with styled content</p>
-              </div>
-            </Widget>
-          </Col>
-        </Row>
-        <Row>
-          <Col lg={6}>
-            <Widget
-              title={
-                <h5>
-                  Table <span className="fw-semi-bold">Styles</span>
-                </h5>
-              }
-              settings
-              close
-            >
-              <h3>
-                Stripped <span className="fw-semi-bold">Table</span>
-              </h3>
-
-              <p>
-                Each row is highlighted. You will never lost there. Just{" "}
-                <code>.table-striped</code> it.
-              </p>
-              <Table className="table-striped">
-                <thead>
-                  <tr>
-                    <th>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox1"
-                          type="checkbox"
-                          checked={this.state.checkboxes1[0]}
-                          onChange={(event) =>
-                            this.checkAll(event, "checkboxes1")
-                          }
-                        />
-                        <Label for="checkbox1" />
-                      </div>
-                    </th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Info</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox2"
-                          type="checkbox"
-                          checked={this.state.checkboxes1[1]}
-                          onChange={(event) =>
-                            this.changeCheck(event, "checkboxes1", 1)
-                          }
-                        />
-                        <Label for="checkbox2" />
-                      </div>
-                    </td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                      <Badge color="danger">Online</Badge>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox3"
-                          type="checkbox"
-                          checked={this.state.checkboxes1[2]}
-                          onChange={(event) =>
-                            this.changeCheck(event, "checkboxes1", 2)
-                          }
-                        />
-                        <Label for="checkbox3" />
-                      </div>
-                    </td>
-                    <td>
-                      Jacob{" "}
-                      <Badge color="warning" className="ml-2">
-                        ALERT!
-                      </Badge>
-                    </td>
-                    <td>Thornton</td>
-                    <td>
-                      <span className="text-secondary badge badge-gray">
-                        Away
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox4"
-                          type="checkbox"
-                          checked={this.state.checkboxes1[3]}
-                          onChange={(event) =>
-                            this.changeCheck(event, "checkboxes1", 3)
-                          }
-                        />
-                        <Label for="checkbox4" />
-                      </div>
-                    </td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>
-                      <Badge color="danger">Construct</Badge>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-              <br />
-              <br />
-              <h3>
-                Hover <span className="fw-semi-bold">Table</span>
-              </h3>
-              <p>
-                {"Trace only what's really important. "}
-                <code>.table-hover</code> is made for it.
-              </p>
-              <div className="table-responsive">
-                <Table className="table-hover">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Email</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  {/* eslint-disable */}
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>
-                        <a href="#">ottoto@example.com</a>
-                      </td>
-                      <td>
-                        <Badge color="gray" className="text-secondary" pill>
-                          Pending
-                        </Badge>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>
-                        <a href="#">fat.thor@example.com</a>
-                      </td>
-                      <td>
-                        <Badge color="gray" className="text-secondary" pill>
-                          Unconfirmed
-                        </Badge>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>
-                        <a href="#">larry@example.com</a>
-                      </td>
-                      <td>
-                        <Badge color="primary" className="text-secondary" pill>
-                          New
-                        </Badge>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Peter</td>
-                      <td>Horadnia</td>
-                      <td>
-                        <a href="#">peter@example.com</a>
-                      </td>
-                      <td>
-                        <Badge color="success" className="text-secondary" pill>
-                          Active
-                        </Badge>
-                      </td>
-                    </tr>
-                  </tbody>
-                  {/* eslint-enable */}
-                </Table>
-              </div>
-            </Widget>
-          </Col>
-          <Col lg={6}>
-            <Widget
-              title={
-                <h5>
-                  Table <span className="fw-semi-bold">Styles</span>
-                </h5>
-              }
-              settings
-              close
-            >
-              <h3>
-                Bordered <span className="fw-semi-bold">Table</span>
-              </h3>
-              <p>
-                Each row is highlighted. You will never lost there. That&apos;s
-                how all of us learned in school the table should look like. Just
-                add
-                <code>.table-bordered</code> to it.
-              </p>
-              <Table className="table-bordered table-lg mt-lg mb-0">
-                <thead className="text-uppercase">
-                  <tr>
-                    <th>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox10"
-                          type="checkbox"
-                          checked={this.state.checkboxes2[0]}
-                          onChange={(event) =>
-                            this.checkAll(event, "checkboxes2")
-                          }
-                        />
-                        <Label for="checkbox10" />
-                      </div>
-                    </th>
-                    <th>Product</th>
-                    <th className="text-right">Price</th>
-                    <th className="text-center">Sales</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox11"
-                          type="checkbox"
-                          checked={this.state.checkboxes2[1]}
-                          onChange={(event) =>
-                            this.changeCheck(event, "checkboxes2", 1)
-                          }
-                        />
-                        <Label for="checkbox11" />
-                      </div>
-                    </td>
-                    <td>On the Road</td>
-                    <td className="text-right">$25 224.2</td>
-                    <td className="text-center">
-                      <Sparklines
-                        data={[13, 14, 16, 15, 4, 14, 20]}
-                        style={{ width: "35px", height: "20px" }}
-                      >
-                        <SparklinesBars style={{ fill: "#1870DC" }} />
-                      </Sparklines>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox12"
-                          type="checkbox"
-                          checked={this.state.checkboxes2[2]}
-                          onChange={(event) =>
-                            this.changeCheck(event, "checkboxes2", 2)
-                          }
-                        />
-                        <Label for="checkbox12" />
-                      </div>
-                    </td>
-                    <td>HP Core i7</td>
-                    <td className="text-right">$87 346.1</td>
-                    <td className="text-center">
-                      <Sparklines
-                        data={[14, 12, 16, 11, 17, 19, 16]}
-                        style={{ width: "35px", height: "20px" }}
-                      >
-                        <SparklinesBars style={{ fill: "#58D777" }} />
-                      </Sparklines>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox13"
-                          type="checkbox"
-                          checked={this.state.checkboxes2[3]}
-                          onChange={(event) =>
-                            this.changeCheck(event, "checkboxes2", 3)
-                          }
-                        />
-                        <Label for="checkbox13" />
-                      </div>
-                    </td>
-                    <td>Let&apos;s Dance</td>
-                    <td className="text-right">$57 944.6</td>
-                    <td className="text-center">
-                      <Sparklines
-                        data={[11, 17, 19, 16, 14, 12, 16]}
-                        style={{ width: "35px", height: "20px" }}
-                      >
-                        <SparklinesBars style={{ fill: "#f0af03" }} />
-                      </Sparklines>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox14"
-                          type="checkbox"
-                          checked={this.state.checkboxes2[4]}
-                          onChange={(event) =>
-                            this.changeCheck(event, "checkboxes2", 4)
-                          }
-                        />
-                        <Label for="checkbox14" />
-                      </div>
-                    </td>
-                    <td>Air Pro</td>
-                    <td className="text-right">$118 533.1</td>
-                    <td className="text-center">
-                      <Sparklines
-                        data={[13, 14, 20, 16, 15, 4, 14]}
-                        style={{ width: "35px", height: "20px" }}
-                      >
-                        <SparklinesBars style={{ fill: "#F45722" }} />
-                      </Sparklines>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox15"
-                          type="checkbox"
-                          checked={this.state.checkboxes2[5]}
-                          onChange={(event) =>
-                            this.changeCheck(event, "checkboxes2", 5)
-                          }
-                        />
-                        <Label for="checkbox15" />
-                      </div>
-                    </td>
-                    <td>Version Control</td>
-                    <td className="text-right">$72 854.5</td>
-                    <td className="text-center">
-                      <Sparklines
-                        data={[16, 15, 4, 14, 13, 14, 20]}
-                        style={{ width: "35px", height: "20px" }}
-                      >
-                        <SparklinesBars style={{ fill: "#4ebfbb" }} />
-                      </Sparklines>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            </Widget>
-            <Widget
-              title={
-                <h5>
-                  Table <span className="fw-semi-bold">Styles</span>
-                </h5>
-              }
-              settings
-              close
-            >
-              <h3>
-                Overflow <span className="fw-semi-bold">Table</span>
-              </h3>
-              <p>
-                Add any non-bordered .table within a widget for a seamless
-                design. Awesome look for no cost. Just wrap the table with
-                simple css class <code>.widget-table-overflow</code> inside of
-                widget
-              </p>
-              <div className="widget-table-overflow">
-                <Table className="table-striped table-lg mt-lg mb-0">
-                  <thead>
-                    <tr>
-                      <th>
-                        <div className="abc-checkbox">
-                          <Input
-                            id="checkbox20"
-                            type="checkbox"
-                            checked={this.state.checkboxes3[0]}
-                            onChange={(event) =>
-                              this.checkAll(event, "checkboxes3")
-                            }
-                          />
-                          <Label for="checkbox20" />
-                        </div>
-                      </th>
-                      <th>Product</th>
-                      <th className="text-right">Price</th>
-                      <th className="text-center">Sales</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div className="abc-checkbox">
-                          <Input
-                            id="checkbox21"
-                            type="checkbox"
-                            checked={this.state.checkboxes3[1]}
-                            onChange={(event) =>
-                              this.changeCheck(event, "checkboxes3", 1)
-                            }
-                          />
-                          <Label for="checkbox21" />
-                        </div>
-                      </td>
-                      <td>On the Road</td>
-                      <td className="text-right">$25 224.2</td>
-                      <td className="text-center">
-                        <Sparklines
-                          data={[13, 14, 16, 15, 4, 14, 20]}
-                          style={{ width: "35px", height: "20px" }}
-                        >
-                          <SparklinesBars style={{ fill: "#1870DC" }} />
-                        </Sparklines>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="abc-checkbox">
-                          <Input
-                            id="checkbox22"
-                            type="checkbox"
-                            checked={this.state.checkboxes3[2]}
-                            onChange={(event) =>
-                              this.changeCheck(event, "checkboxes3", 2)
-                            }
-                          />
-                          <Label for="checkbox22" />
-                        </div>
-                      </td>
-                      <td>HP Core i7</td>
-                      <td className="text-right">$87 346.1</td>
-                      <td className="text-center">
-                        <Sparklines
-                          data={[14, 12, 16, 11, 17, 19, 16]}
-                          style={{ width: "35px", height: "20px" }}
-                        >
-                          <SparklinesBars style={{ fill: "#F45722" }} />
-                        </Sparklines>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="abc-checkbox">
-                          <Input
-                            id="checkbox23"
-                            type="checkbox"
-                            checked={this.state.checkboxes3[3]}
-                            onChange={(event) =>
-                              this.changeCheck(event, "checkboxes3", 3)
-                            }
-                          />
-                          <Label for="checkbox23" />
-                        </div>
-                      </td>
-                      <td>Let&apos;s Dance</td>
-                      <td className="text-right">$57 944.6</td>
-                      <td className="text-center">
-                        <Sparklines
-                          data={[11, 17, 19, 16, 14, 12, 16]}
-                          style={{ width: "35px", height: "20px" }}
-                        >
-                          <SparklinesBars style={{ fill: "#f0af03" }} />
-                        </Sparklines>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="abc-checkbox">
-                          <Input
-                            id="checkbox24"
-                            type="checkbox"
-                            checked={this.state.checkboxes3[4]}
-                            onChange={(event) =>
-                              this.changeCheck(event, "checkboxes3", 4)
-                            }
-                          />
-                          <Label for="checkbox24" />
-                        </div>
-                      </td>
-                      <td>Air Pro</td>
-                      <td className="text-right">$118 533.1</td>
-                      <td className="text-center">
-                        <Sparklines
-                          data={[13, 14, 20, 16, 15, 4, 14]}
-                          style={{ width: "35px", height: "20px" }}
-                        >
-                          <SparklinesBars style={{ fill: "#58D777" }} />
-                        </Sparklines>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="abc-checkbox">
-                          <Input
-                            id="checkbox25"
-                            type="checkbox"
-                            checked={this.state.checkboxes3[5]}
-                            onChange={(event) =>
-                              this.changeCheck(event, "checkboxes3", 5)
-                            }
-                          />
-                          <Label for="checkbox25" />
-                        </div>
-                      </td>
-                      <td>Version Control</td>
-                      <td className="text-right">$72 854.5</td>
-                      <td className="text-center">
-                        <Sparklines
-                          data={[16, 15, 4, 14, 13, 14, 20]}
-                          style={{ width: "35px", height: "20px" }}
-                        >
-                          <SparklinesBars style={{ fill: "#4ebfbb" }} />
-                        </Sparklines>
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </div>
             </Widget>
           </Col>
         </Row>
