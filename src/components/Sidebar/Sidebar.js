@@ -124,7 +124,7 @@ class Sidebar extends React.Component {
                         header="사용자 정보"
                         isHeader
                         iconName={<ComponentsIcon className={s.menuIcon}/>}
-                        link="/app/components/"
+                        link="/app/components"
                         index="components"
                         childrenLinks={[
                             {

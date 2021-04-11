@@ -41,6 +41,21 @@ class Static extends React.Component {
           },
         },
         {
+          id: 4,
+          picture: require("../../assets/tables/4.png"), // eslint-disable-line global-require
+          description: "체육관 주차장",
+          info: {
+            type: "체육관 뒤 1층",
+            dimensions: "지도보기",
+          },
+          number: "45",
+          favorite: "미등록",
+          progress: {
+            percent: 40,
+            colorClass: "primary",
+          },
+        },
+        {
           id: 5,
           picture: require("../../assets/tables/5.png"), // eslint-disable-line global-require
           description: "정보통신원 주차장",

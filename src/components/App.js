@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+
 
 /* eslint-disable */
 import ErrorPage from '../pages/error';
@@ -36,7 +37,7 @@ class App extends React.PureComponent {
                 hideProgressBar
                 closeButton={<CloseButton/>}
             />
-            <HashRouter>
+            <BrowserRouter>
                 <Switch>
                     <Route path="/" exact render={() => <Redirect to="/app/main"/>}/>
                     <Route path="/app" exact render={() => <Redirect to="/app/main"/>}/>
@@ -47,7 +48,7 @@ class App extends React.PureComponent {
                     <Route component={ErrorPage}/>
                     <Redirect from="*" to="/app/main/dashboard"/>
                 </Switch>
-            </HashRouter>
+            </BrowserRouter>
         </div>
 
     );

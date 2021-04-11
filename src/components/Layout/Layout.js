@@ -73,7 +73,6 @@ class Layout extends React.Component {
               <TransitionGroup>
                 <CSSTransition
                   key={this.props.location.key}
-                  classNames="fade"
                   timeout={200}
                 >
                   <Switch>
