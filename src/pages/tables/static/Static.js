@@ -26,33 +26,33 @@ class Static extends React.Component {
           picture: require("../../../assets/tables/1.png"), // eslint-disable-line global-require
           description: "공대4호관 주차장",
           info: {
-            type: "JPEG",
-            dimensions: "200x150",
+            type: "공대4호관 2층",
+            dimensions: "지도보기",
           },
           label: {
             colorClass: "primary",
             text: "Accessible",
           },
-          date: new Date("September 14, 2012"),
-          size: "45.6 KB",
+          number: "54",
+          favorite: "등록",
           progress: {
-            percent: 29,
-            colorClass: "success",
+            percent: 60,
+            colorClass: "warning",
           },
         },
         {
           id: 2,
           picture: require("../../../assets/tables/2.png"), // eslint-disable-line global-require
-          description: "공대2호관 주차장",
+          description: "아라뮤즈홀 주차장",
           info: {
-            type: "PSD",
-            dimensions: "2400x1455",
+            type: "아라뮤즈홀 앞 1층",
+            dimensions: "지도보기",
           },
-          date: new Date("November 14, 2012"),
-          size: "15.3 MB",
+          number: "33",
+          favorite: "미등록",
           progress: {
-            percent: 33,
-            colorClass: "warning",
+            percent: 20,
+            colorClass: "success",
           },
         },
         {
@@ -61,14 +61,14 @@ class Static extends React.Component {
           description: "본관 앞 주차장",
           
           info: {
-            type: "JPEG",
-            dimensions: "200x150",
+            type: "본관 앞 1층",
+            dimensions: "지도보기",
           },
-          date: new Date("September 14, 2012"),
-          size: "49.0 KB",
+          number: "56",
+          favorite: "미등록",
           progress: {
-            percent: 38,
-            colorClass: "inverse",
+            percent: 90,
+            colorClass: "danger",
           },
         },
         {
@@ -76,14 +76,14 @@ class Static extends React.Component {
           picture: require("../../../assets/tables/4.png"), // eslint-disable-line global-require
           description: "체육관 주차장",
           info: {
-            type: "PNG",
-            dimensions: "210x160",
+            type: "체육관 뒤 1층",
+            dimensions: "지도보기",
           },
-          date: new Date("September 15, 2012"),
-          size: "69.1 KB",
+          number: "45",
+          favorite: "미등록",
           progress: {
-            percent: 17,
-            colorClass: "danger",
+            percent: 40,
+            colorClass: "primary",
           },
         },
         {
@@ -91,23 +91,20 @@ class Static extends React.Component {
           picture: require("../../../assets/tables/5.png"), // eslint-disable-line global-require
           description: "정보통신원 주차장",
           info: {
-            type: "JPEG",
-            dimensions: "1452x1320",
+            type: "정보통신원 옆 1층",
+            dimensions: "지도보기",
           },
-          date: new Date("October 1, 2012"),
-          size: "2.3 MB",
+          number: "17",
+          favorite: "등록",
           progress: {
-            percent: 41,
-            colorClass: "primary",
+            percent: 66,
+            colorClass: "warning",
           },
         },
       ],
-      checkboxes1: [false, true, false, false],
-      checkboxes2: [false, false, false, false, false, false],
-      checkboxes3: [false, false, false, false, false, false],
     };
 
-    this.checkAll = this.checkAll.bind(this);
+    
   }
 
   parseDate(date) {
@@ -118,27 +115,7 @@ class Static extends React.Component {
     }, ${this.dateSet[3]}`;
   }
 
-  checkAll(ev, checkbox) {
-    const checkboxArr = new Array(this.state[checkbox].length).fill(
-      ev.target.checked
-    );
-    this.setState({
-      [checkbox]: checkboxArr,
-    });
-  }
-
-  changeCheck(ev, checkbox, id) {
-    //eslint-disable-next-line
-    this.state[checkbox][id] = ev.target.checked;
-    if (!ev.target.checked) {
-      //eslint-disable-next-line
-      this.state[checkbox][0] = false;
-    }
-    this.setState({
-      [checkbox]: this.state[checkbox],
-    });
-  }
-
+  
   render() {
     return (
       <div className={s.root}>
@@ -193,7 +170,7 @@ class Static extends React.Component {
                       <td>
                         <p className="mb-0">
                           <small>
-                            Type:
+                            위치 :
                             <span className="text-muted fw-semi-bold">
                               &nbsp; {row.info.type}
                             </span>
@@ -201,15 +178,15 @@ class Static extends React.Component {
                         </p>
                         <p>
                           <small>
-                            Dimensions:
+                            지도로 위치 확인 :
                             <span className="text-muted fw-semi-bold">
                               &nbsp; {row.info.dimensions}
                             </span>
                           </small>
                         </p>
                       </td>
-                      <td className="text-muted">{this.parseDate(row.date)}</td>
-                      <td className="text-muted">{row.size}</td>
+                      <td>주차장 자리수 : 총 <span className="text-muted fw-semi-bold">{row.number}</span> 개</td>
+                      <td className="text-muted">{row.favorite}</td>
                       <td className="width-150">
                         <Progress
                           color={row.progress.colorClass}
