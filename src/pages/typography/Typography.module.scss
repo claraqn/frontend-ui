@@ -1,7 +1,6 @@
 @import '../../styles/app';
 
 .root {
-
 }
 
 .mainTableWidget {
@@ -12,6 +11,11 @@
   }
 }
 
-.small{
+.small {
   font-size: xx-small;
+}
+
+.image {
+  width: 100px;
+  height: 60px;
 }
