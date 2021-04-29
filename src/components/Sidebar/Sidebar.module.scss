@@ -28,9 +28,8 @@
   :global(.sidebar-hide) & {
     display: none;
   }
-  
-  @include scroll-bar($sidebar-scrollbar-bg);
 
+  @include scroll-bar($sidebar-scrollbar-bg);
 
   @media (max-width: breakpoint-max(sm)) {
     position: static !important;
@@ -90,15 +89,14 @@
     border-radius: 50%;
     width: 32px;
     height: 32px;
-  } 
-
+  }
 }
 
 .navTitle {
   margin: 25px 0 5px 20px;
   font-size: 13px;
   font-weight: $font-weight-bold;
-  color: #A5A7B850;
+  color: #a5a7b850;
   transition: opacity $sidebar-transition-time ease-in-out;
 
   @media (min-width: breakpoint-min(lg)) {
@@ -205,14 +203,14 @@
   margin-right: 2px;
   padding: 0.5rem 11px 0.5rem 10px !important;
   padding-right: 15px;
-  
+
   button > span {
     color: $icon-color;
     font-weight: $font-weight-normal;
   }
 
   .alertFooter {
-    color: #A5A7B850;
+    color: #a5a7b850;
   }
 }
 
@@ -223,4 +221,3 @@
 .menuIcon {
   fill: $icon-color;
 }
-

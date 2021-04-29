@@ -14,6 +14,7 @@ import {
 
 import Widget from '../../components/Widget';
 import s from './Typography.module.scss';
+import LinksGroup from '../../components/Sidebar/LinksGroup/LinksGroup';
 
 class Static extends React.Component {
   constructor(props) {
@@ -169,6 +170,20 @@ class Static extends React.Component {
                           value={row.progress.percent}
                           className="progress-sm mb-xs"
                         />
+                        <Button
+                          outline
+                          className={s.button}
+                          // href="/app/vacancy"
+                          // onClick={this.handleClick}
+                        >
+                          <LinksGroup
+                            link="/app/vacancy"
+                            // link={'/app/vacancy' + ' ' + row.description}
+                            header="주차장 빈자리 확인"
+                            className={s.link}
+                            index={row.description}
+                          ></LinksGroup>
+                        </Button>
                       </td>
                     </tr>
                   ))}

@@ -15,6 +15,9 @@ import LinksGroup from '../../../components/Sidebar/LinksGroup/LinksGroup';
 
 import Widget from '../../../components/Widget';
 import s from './Static.module.scss';
+import Vacancy from '../../vacancy';
+
+import { Switch, Route, withRouter, Redirect } from 'react-router';
 
 class Static extends React.Component {
   constructor(props) {
@@ -104,15 +107,9 @@ class Static extends React.Component {
       ],
     };
   }
-
-  parseDate(date) {
-    this.dateSet = date.toDateString().split(' ');
-
-    return `${date.toLocaleString('en-us', { month: 'long' })} ${
-      this.dateSet[2]
-    }, ${this.dateSet[3]}`;
-  }
-
+  // handleClick(e) {
+  //   console.log(e);
+  // }
   render() {
     return (
       <div className={s.root}>
@@ -199,6 +196,20 @@ class Static extends React.Component {
                           value={row.progress.percent}
                           className="progress-sm mb-xs"
                         />
+                        <Button
+                          outline
+                          className={s.button}
+                          // href="/app/vacancy"
+                          // onClick={this.handleClick}
+                        >
+                          <LinksGroup
+                            link="/app/vacancy"
+                            // link={'/app/vacancy' + ' ' + row.description}
+                            header="주차장 빈자리 확인"
+                            className={s.link}
+                            index={row.description}
+                          ></LinksGroup>
+                        </Button>
                       </td>
                     </tr>
                   ))}
@@ -207,30 +218,6 @@ class Static extends React.Component {
             </Widget>
           </Col>
         </Row>
-        <Widget
-          title={
-            <h5>
-              공대4호관 주차장
-              <span className="fw-semi-bold"></span>
-            </h5>
-          }
-          bodyClass={s.mainTableWidget}
-        >
-          <Table striped>
-            <thead>
-              <tr className="fs-sm">
-                <th>1</th>
-                <th>2</th>
-                <th>
-                  <LinksGroup
-                    header="이동"
-                    link="/app/notifications"
-                  ></LinksGroup>
-                </th>
-              </tr>
-            </thead>
-          </Table>
-        </Widget>
       </div>
     );
   }

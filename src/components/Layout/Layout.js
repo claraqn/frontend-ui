@@ -12,6 +12,7 @@ import MapsGoogle from '../../pages/components/maps/google';
 import CoreTypography from '../../pages/typography';
 import Charts from '../../pages/components/charts/Charts';
 import Dashboard from '../../pages/dashboard';
+import Vacancy from '../../pages/vacancy';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
@@ -108,6 +109,7 @@ class Layout extends React.Component {
                       exact
                       component={CoreTypography}
                     />
+                    <Route path="/app/vacancy" exact component={Vacancy} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
