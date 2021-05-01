@@ -1,16 +1,5 @@
 import React from "react";
-import {
-  Row,
-  Col,
-  Table,
-  Progress,
-  Button,
-  UncontrolledButtonDropdown,
-  DropdownMenu,
-  DropdownToggle,
-  DropdownItem,
-  Badge,
-} from "reactstrap";
+import { Row, Col, Table, Progress, Badge } from "reactstrap";
 
 import Widget from "../../../components/Widget";
 import s from "./Static.module.scss";
@@ -59,7 +48,7 @@ class Static extends React.Component {
           id: 3,
           picture: require("../../../assets/tables/3.png"), // eslint-disable-line global-require
           description: "본관 앞 주차장",
-          
+
           info: {
             type: "본관 앞 1층",
             dimensions: "지도보기",
@@ -103,8 +92,6 @@ class Static extends React.Component {
         },
       ],
     };
-
-    
   }
 
   parseDate(date) {
@@ -115,7 +102,6 @@ class Static extends React.Component {
     }, ${this.dateSet[3]}`;
   }
 
-  
   render() {
     return (
       <div className={s.root}>
@@ -128,7 +114,8 @@ class Static extends React.Component {
             <Widget
               title={
                 <h5>
-                  제주대학교 내 주차장 목록<span className="fw-semi-bold"></span>
+                  제주대학교 내 주차장 목록
+                  <span className="fw-semi-bold"></span>
                 </h5>
               }
               bodyClass={s.mainTableWidget}
@@ -142,7 +129,9 @@ class Static extends React.Component {
                     <th className="hidden-sm-down">Location</th>
                     <th className="hidden-sm-down">Number of parking spaces</th>
                     <th className="hidden-sm-down">Favorite</th>
-                    <th className="hidden-sm-down">Check the number of vacancy</th>
+                    <th className="hidden-sm-down">
+                      Check the number of vacancy
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -185,7 +174,13 @@ class Static extends React.Component {
                           </small>
                         </p>
                       </td>
-                      <td>주차장 자리수 : 총 <span className="text-muted fw-semi-bold">{row.number}</span> 개</td>
+                      <td>
+                        주차장 자리수 : 총{" "}
+                        <span className="text-muted fw-semi-bold">
+                          {row.number}
+                        </span>{" "}
+                        개
+                      </td>
                       <td className="text-muted">{row.favorite}</td>
                       <td className="width-150">
                         <Progress

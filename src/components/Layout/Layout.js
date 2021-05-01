@@ -12,6 +12,7 @@ import MapsGoogle from '../../pages/components/maps/google';
 import CoreTypography from '../../pages/typography';
 import Charts from '../../pages/components/charts/Charts';
 import Dashboard from '../../pages/dashboard';
+import Parkinglot from '../../pages/parkinglot';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
@@ -35,7 +36,6 @@ class Layout extends React.Component {
 
     this.handleSwipe = this.handleSwipe.bind(this);
   }
-
 
   handleSwipe(e) {
     if ('ontouchstart' in window) {
@@ -71,25 +71,55 @@ class Layout extends React.Component {
             <main className={s.content}>
               <BreadcrumbHistory url={this.props.location.pathname} />
               <TransitionGroup>
-                <CSSTransition
-                  key={this.props.location.key}
-                  timeout={200}
-                >
+                <CSSTransition key={this.props.location.key} timeout={200}>
                   <Switch>
-                    <Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
-                    <Route path="/app/main/dashboard" exact component={Dashboard} />
-                    <Route path="/app/components/icons" exact component={UIIcons} />
-                    <Route path="/app/notifications" exact component={UINotifications} />
-                    <Route path="/app/components/charts" exact component={Charts} />
+                    <Route
+                      path="/app/main"
+                      exact
+                      render={() => <Redirect to="/app/main/dashboard" />}
+                    />
+                    <Route
+                      path="/app/main/dashboard"
+                      exact
+                      component={Dashboard}
+                    />
+                    <Route
+                      path="/app/components/icons"
+                      exact
+                      component={UIIcons}
+                    />
+                    <Route
+                      path="/app/notifications"
+                      exact
+                      component={UINotifications}
+                    />
+                    <Route
+                      path="/app/components/charts"
+                      exact
+                      component={Charts}
+                    />
                     <Route path="/app/tables" exact component={TablesStatic} />
-                    <Route path="/app/components/maps" exact component={MapsGoogle} />
-                    <Route path="/app/typography" exact component={CoreTypography} />
+                    <Route
+                      path="/app/components/maps"
+                      exact
+                      component={MapsGoogle}
+                    />
+                    <Route
+                      path="/app/typography"
+                      exact
+                      component={CoreTypography}
+                    />
+                    <Route
+                      path="/app/tables/parkinglot"
+                      exact
+                      component={Parkinglot}
+                    />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
               <footer className={s.contentFooter}>
                 Find Park Vacancy Area_Made by Team 9_Jeju UNIV Capstone 3_
-                <a href = "https://github.com/capstone3-frontend">GitHubPage</a>
+                <a href="https://github.com/capstone3-frontend">GitHubPage</a>
               </footer>
             </main>
           </Hammer>
