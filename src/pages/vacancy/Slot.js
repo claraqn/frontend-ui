@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import s from './Parkinglot.module.scss';
+import s from './vacancy.module.scss';
 
 class Slot extends Component {
   state = {

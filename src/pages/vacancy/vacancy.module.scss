@@ -4,18 +4,32 @@
 }
 
 .mainTableWidget {
-  :global {
-    .table td {
-      border: none;
-    }
-  }
+  position: relative;
+  width: 800px;
+  height: 600px;
 }
 
 .small {
   font-size: xx-small;
 }
 
-.image {
-  width: 100px;
-  height: 60px;
+.slot {
+  border: 2px solid gray;
+  background-color: red;
+  position: absolute;
+  &.horizontal {
+    transform: rotate(90deg);
+  }
+  &.vertical {
+    transform: rotate(0deg);
+  }
+  &.leftTilt {
+    transform: rotate(315deg);
+  }
+  &.rightTilt {
+    transform: rotate(45deg);
+  }
+  &.isEmpty {
+    background-color: white;
+  }
 }
