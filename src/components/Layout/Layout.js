@@ -7,7 +7,7 @@ import Hammer from 'rc-hammerjs';
 
 import UIIcons from '../../pages/components/icons';
 import UINotifications from '../../pages/notifications';
-import TablesStatic from '../../pages/tables/static';
+import StationList from '../../pages/stationlists';
 import MapsGoogle from '../../pages/components/maps/google';
 import CoreTypography from '../../pages/typography';
 import Charts from '../../pages/components/charts/Charts';
@@ -98,7 +98,7 @@ class Layout extends React.Component {
                       exact
                       component={Charts}
                     />
-                    <Route path="/app/tables" exact component={TablesStatic} />
+                    <Route path="/app/tables" exact component={StationList} />
                     <Route
                       path="/app/components/maps"
                       exact
