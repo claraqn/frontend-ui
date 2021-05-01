@@ -123,7 +123,15 @@ class Vacancy extends React.Component {
         </h1>
         <Row>
           <Col>
-            <Widget bodyClass={s.mainTableWidget}>
+            <Widget
+              title={
+                <h5>
+                  제주대학교 공대4호관 주차장
+                  <span className="fw-semi-bold"></span>
+                </h5>
+              }
+              bodyClass={s.mainTableWidget}
+            >
               {this.state.slotdatas.map((s) => (
                 <Slot
                   key={uuid()}
