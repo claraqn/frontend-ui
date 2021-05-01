@@ -13,7 +13,7 @@ function getAPI(param) {
   return (dispatch) => {
     fetchData(param)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         dispatch({
           type: GET_DATA_SUCCESS,
           payload: response,
