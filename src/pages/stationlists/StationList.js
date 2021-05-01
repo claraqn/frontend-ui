@@ -37,8 +37,14 @@ class StationLists extends React.Component {
                 <thead>
                   <tr className="fs-sm">
                     <th className="hidden-sm-down">#</th>
+                    <th>Picture</th>
                     <th>Name</th>
                     <th className="hidden-sm-down">Location</th>
+                    <th className="hidden-sm-down">Number of parking spaces</th>
+                    <th className="hidden-sm-down">Favorite</th>
+                    <th className="hidden-sm-down">
+                      Check the number of vacancy
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
