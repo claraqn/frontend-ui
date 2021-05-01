@@ -36,10 +36,41 @@ class Vacancy extends React.Component {
               bodyClass={s.mainTableWidget}
             >
               <Table striped>
-                <th>
-                  <td>1</td>
-                  <td>2</td>
-                </th>
+                /* 주차장 형태를 딴 빈자리 박스 부분 구현 예정 */
+                <br></br>
+                <div className={s.box}>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.parkcenter}></div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                  <div className={s.park}>park</div>
+                </div>
+                <br></br>
+                <h6>>>공대4호관 주차장</h6>
               </Table>
             </Widget>
           </Col>

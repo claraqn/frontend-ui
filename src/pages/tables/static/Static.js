@@ -207,7 +207,6 @@ class Static extends React.Component {
                             // link={'/app/vacancy' + ' ' + row.description}
                             header="주차장 빈자리 확인"
                             className={s.link}
-                            index={row.description}
                           ></LinksGroup>
                         </Button>
                       </td>
