@@ -36,10 +36,12 @@ class Vacancy extends React.Component {
               bodyClass={s.mainTableWidget}
             >
               <Table striped>
-                <th>
-                  <td>1</td>
-                  <td>2</td>
-                </th>
+                <thead>
+                  <tr className="fs-sm">
+                    <th className="hidden-sm-down">1</th>
+                    <th>2</th>
+                  </tr>
+                </thead>
               </Table>
             </Widget>
           </Col>
