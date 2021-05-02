@@ -107,9 +107,7 @@ class Static extends React.Component {
       ],
     };
   }
-  // handleClick(e) {
-  //   console.log(e);
-  // }
+
   render() {
     return (
       <div className={s.root}>
