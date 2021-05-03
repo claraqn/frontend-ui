@@ -66,11 +66,11 @@ class StationItem extends Component {
           <Button
             outline
             className={s.button}
-            // href={`/app/vacancy?id=${id}`}
+            // href={`/app/tables/vacancy?id=${id}`}
             // onClick={this.handleClick}
           >
             <LinksGroup
-              link={`/app/vacancy?id=${id}`}
+              link={`/app/tables/vacancy?id=${id}`}
               // link={'/app/vacancy' + ' ' + row.description}
               header="주차장 빈자리 확인"
               className={s.link}

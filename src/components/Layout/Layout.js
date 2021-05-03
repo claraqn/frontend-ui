@@ -109,7 +109,11 @@ class Layout extends React.Component {
                       exact
                       component={CoreTypography}
                     />
-                    <Route path="/app/vacancy" exact component={Vacancy} />
+                    <Route
+                      path="/app/tables/vacancy"
+                      exact
+                      component={Vacancy}
+                    />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
