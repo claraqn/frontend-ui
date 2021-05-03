@@ -33,8 +33,23 @@ function getAPI(param) {
 function getStations() {
   return (dispatch) => {
     dispatch({ type: GET_DATA_PENDING });
+    //TODO: Fix
     dispatch(getAPI('stations.json'));
   };
 }
 
-export { GET_DATA_PENDING, GET_DATA_SUCCESS, GET_DATA_FAILURE, getStations };
+function getStationData(stationID) {
+  return (dispatch) => {
+    dispatch({ type: GET_DATA_PENDING });
+    //TODO: Fix
+    dispatch(getAPI(`stations/${stationID}.json`));
+  };
+}
+
+export {
+  GET_DATA_PENDING,
+  GET_DATA_SUCCESS,
+  GET_DATA_FAILURE,
+  getStations,
+  getStationData,
+};
