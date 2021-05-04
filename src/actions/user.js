@@ -4,48 +4,47 @@ export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 export function receiveLogin() {
-    return {
-        type: LOGIN_SUCCESS
-    };
+  return {
+    type: LOGIN_SUCCESS,
+  };
 }
 
 function loginError(payload) {
-    return {
-        type: LOGIN_FAILURE,
-        payload,
-    };
+  return {
+    type: LOGIN_FAILURE,
+    payload,
+  };
 }
 
 function requestLogout() {
-    return {
-        type: LOGOUT_REQUEST,
-    };
+  return {
+    type: LOGOUT_REQUEST,
+  };
 }
 
 export function receiveLogout() {
-    return {
-        type: LOGOUT_SUCCESS,
-    };
+  return {
+    type: LOGOUT_SUCCESS,
+  };
 }
 
 // Logs the user out
 export function logoutUser() {
-    return (dispatch) => {
-        dispatch(requestLogout());
-        localStorage.removeItem('authenticated');
-        dispatch(receiveLogout());
-    };
+  return (dispatch) => {
+    dispatch(requestLogout());
+    localStorage.removeItem('authenticated');
+    dispatch(receiveLogout());
+  };
 }
 
 export function loginUser(creds) {
-    return (dispatch) => {
+  return (dispatch) => {
+    dispatch(receiveLogin());
 
-        dispatch(receiveLogin());
-
-        if (creds.email.length > 0 && creds.password.length > 0) {
-            localStorage.setItem('authenticated', true)
-        } else {
-            dispatch(loginError('Something was wrong. Try again'));
-        }
+    if (creds.email.length > 0 && creds.password.length > 0) {
+      localStorage.setItem('authenticated', true);
+    } else {
+      dispatch(loginError('Something was wrong. Try again'));
     }
+  };
 }
