@@ -218,64 +218,7 @@ class Header extends React.Component {
                 </ButtonGroup>
               </DropdownMenu>
             </Dropdown>
-            <Dropdown
-              className="d-none d-sm-block"
-              nav
-              isOpen={this.state.supportOpen}
-              toggle={this.toggleSupportDropdown}
-            >
-              <DropdownToggle nav className={`${s.navItem} text-white`}>
-                <BellIcon className={s.headerIcon} />
-                <div className={s.count}></div>
-              </DropdownToggle>
-              <DropdownMenu right className={`${s.dropdownMenu} ${s.support}`}>
-                <DropdownItem>
-                  <Badge color="danger">
-                    <i className="fa fa-bell-o" />
-                  </Badge>
-                  <div className={s.details}>Check out this awesome ticket</div>
-                </DropdownItem>
-                <DropdownItem>
-                  <Badge color="warning">
-                    <i className="fa fa-question-circle" />
-                  </Badge>
-                  <div className={s.details}>
-                    What is the best way to get ...
-                  </div>
-                </DropdownItem>
-                <DropdownItem>
-                  <Badge color="success">
-                    <i className="fa fa-info-circle" />
-                  </Badge>
-                  <div className={s.details}>
-                    This is just a simple notification
-                  </div>
-                </DropdownItem>
-                <DropdownItem>
-                  <Badge color="info">
-                    <i className="fa fa-plus" />
-                  </Badge>
-                  <div className={s.details}>
-                    12 new orders has arrived today
-                  </div>
-                </DropdownItem>
-                <DropdownItem>
-                  <Badge color="danger">
-                    <i className="fa fa-tag" />
-                  </Badge>
-                  <div className={s.details}>
-                    One more thing that just happened
-                  </div>
-                </DropdownItem>
-                <DropdownItem>
-                  {/* eslint-disable-next-line */}
-                  <a href="#" className="text-white">
-                    See all tickets{' '}
-                    <ArrowIcon className={s.headerIcon} maskName="bellArrow" />
-                  </a>
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+
             <NavItem>
               <NavLink
                 onClick={this.doLogout}
