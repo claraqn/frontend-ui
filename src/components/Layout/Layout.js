@@ -19,6 +19,7 @@ import Sidebar from '../Sidebar';
 import BreadcrumbHistory from '../BreadcrumbHistory';
 import { openSidebar, closeSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
+import Login from '../../pages/login/Login';
 
 class Layout extends React.Component {
   static propTypes = {
