@@ -69,5 +69,5 @@ export default connect(
   }),
   (dispatch) => ({
     APIActions: bindActionCreators(apiActions, dispatch),
-  }),
+  })
 )(StationLists);

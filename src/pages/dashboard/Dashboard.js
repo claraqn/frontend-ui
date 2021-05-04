@@ -1,12 +1,10 @@
-import React from "react";
-import { Row } from "reactstrap";
+import React from 'react';
+import { Row } from 'reactstrap';
 
+import s from './Dashboard.module.scss';
 
-import s from "./Dashboard.module.scss";
-
-import park1 from "../../assets/park/park1.png";
-import park2 from "../../assets/park/park2.png";
-
+import park1 from '../../assets/park/park1.png';
+import park2 from '../../assets/park/park2.png';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -54,23 +52,37 @@ class Dashboard extends React.Component {
             <small>made by Team 9</small>
           </small>
         </h1>
-
-        <Row>
-          <img
-              src={park1}
-              alt="..."
-              className={s.parkleft}
-              // 
-            />
-          {/* <span>hello</span> */}
-            <img
-              src={park2}
-              alt="..."
-              className={s.parkright}
-              // 
-            />
-            {/* <span>hello</span> */}
+        <Row className={s.webkit}>
+          <div
+            style={{
+              backgroundImage: `url(${park1})`,
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              width: '500px',
+              height: '300px',
+              float: 'left',
+              textAlign: 'center',
+            }}
+            className={s.sizeup}
+          >
+            <span className={s.text}>You can use this service in indoor</span>
+          </div>
+          <div
+            style={{
+              backgroundImage: `url(${park2})`,
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              width: '530px',
+              height: '330px',
+              float: 'left',
+              textAlign: 'center',
+            }}
+            className={s.sizeup}
+          >
+            <span className={s.text}>You can use this service in outdoor</span>
+          </div>
         </Row>
+        {/* </div> */}
       </div>
     );
   }
