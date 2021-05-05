@@ -49,7 +49,11 @@ class StationLists extends React.Component {
                 </thead>
                 <tbody>
                   {stations.map((station) => (
-                    <StationItem key={station.id} {...station}></StationItem>
+                    <StationItem
+                      key={station.id}
+                      {...station}
+                      // onClick={console.log(station.id)}
+                    ></StationItem>
                   ))}
                 </tbody>
               </Table>

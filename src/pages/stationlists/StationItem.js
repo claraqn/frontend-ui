@@ -51,7 +51,7 @@ class StationItem extends Component {
           </p>
         </td>
         <td>
-          주차장 자리수 : 총{' '}
+          주차장 자리수 : 총 {/* 주차장 빈자리수 : 총  */}
           <span className="text-muted fw-semi-bold">{vacancy}</span> 개
         </td>
         {/* TODO:Fix */}
