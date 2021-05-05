@@ -20,6 +20,7 @@ import BreadcrumbHistory from '../BreadcrumbHistory';
 import { openSidebar, closeSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
 import Login from '../../pages/login/Login';
+import Typography from '../../pages/typography';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -108,7 +109,7 @@ class Layout extends React.Component {
                     <Route
                       path="/app/typography"
                       exact
-                      component={CoreTypography}
+                      component={Typography}
                     />
                     <Route
                       path="/app/tables/vacancy"

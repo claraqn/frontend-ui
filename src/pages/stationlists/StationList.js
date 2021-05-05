@@ -53,6 +53,7 @@ class StationLists extends React.Component {
                     <StationItem
                       key={`${station.id}${uuid()}`}
                       {...station}
+                      // onClick={console.log(station.id)}
                     ></StationItem>
                   ))}
                 </tbody>
@@ -73,5 +74,5 @@ export default connect(
   }),
   (dispatch) => ({
     APIActions: bindActionCreators(apiActions, dispatch),
-  })
+  }),
 )(StationLists);
