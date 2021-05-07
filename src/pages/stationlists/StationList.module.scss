@@ -9,6 +9,7 @@
       border: none;
     }
   }
+  overflow-x: scroll;
 }
 
 .small {
@@ -24,3 +25,15 @@
   text-align: center;
   font-size: 0.2em;
 }
+
+// @media (max-width: 690px) {
+//   .root {
+//     -ms-transform: rotate(90deg); /* IE 9 */
+//     -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+//     transform: rotate(90deg);
+//   }
+// }
+
+// .table {
+//   overflow-x: scroll;
+// }

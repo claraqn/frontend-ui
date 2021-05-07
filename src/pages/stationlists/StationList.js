@@ -33,7 +33,7 @@ class StationLists extends React.Component {
               }
               bodyClass={s.mainTableWidget}
             >
-              <Table striped>
+              <Table striped className={s.table}>
                 <thead>
                   <tr className="fs-sm">
                     <th className="hidden-sm-down">#</th>
