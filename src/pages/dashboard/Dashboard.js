@@ -58,8 +58,8 @@ class Dashboard extends React.Component {
               backgroundImage: `url(${park1})`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
-              width: '500%',
-              height: '300%',
+              width: '530%',
+              height: '330%',
               float: 'left',
               textAlign: 'center',
             }}

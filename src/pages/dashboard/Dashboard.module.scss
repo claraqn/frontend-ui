@@ -40,7 +40,7 @@
 .text {
   color: white;
   text-shadow: 1em 1em 1em black;
-  margin-left: -4vw;
+  margin-left: -6vw;
   font-size: 1vw;
   font-style: italic;
   font-weight: 900;
@@ -60,7 +60,7 @@
 .webkit {
   flex-wrap: nowrap;
   // padding-top: calc(591.44 / 1127.34 * 100%);
-  // padding-bottom: 56.26%;
+  // padding-inline-end: 56.26%;
 }
 
 @media screen and (max-width: 1000px) {
