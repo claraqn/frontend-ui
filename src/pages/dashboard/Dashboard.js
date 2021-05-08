@@ -58,8 +58,8 @@ class Dashboard extends React.Component {
               backgroundImage: `url(${park1})`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
-              width: '500px',
-              height: '300px',
+              width: '530%',
+              height: '330%',
               float: 'left',
               textAlign: 'center',
             }}
@@ -72,8 +72,8 @@ class Dashboard extends React.Component {
               backgroundImage: `url(${park2})`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
-              width: '530px',
-              height: '330px',
+              width: '530%',
+              height: '330%',
               float: 'left',
               textAlign: 'center',
             }}

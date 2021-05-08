@@ -9,6 +9,12 @@
       border: none;
     }
   }
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.mainTableWidget::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 
 .small {

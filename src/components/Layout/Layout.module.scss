@@ -16,7 +16,7 @@
   left: 0;
   right: 0;
   transition: left $sidebar-transition-time ease-in-out;
-  
+
   @media print {
     margin: 0;
   }
@@ -50,7 +50,6 @@
   @media (min-width: breakpoint-min(sm)) {
     user-select: auto !important;
   }
-  
 }
 
 .contentFooter {
@@ -58,3 +57,9 @@
   bottom: 15px;
   color: $text-muted;
 }
+
+// @media (max-width: 690px) {
+//   .contentFooter {
+//     visibility: hidden;
+//   }
+// }
