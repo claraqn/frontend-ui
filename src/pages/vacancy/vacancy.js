@@ -44,6 +44,10 @@ class Vacancy extends React.Component {
       stationData[0].stationRowNumber === undefined
         ? 0
         : stationData[0].stationRowNumber;
+    const stationBG =
+      stationData[0] === undefined || stationData[0].stationBG === undefined
+        ? 0
+        : stationData[0].stationBG;
     const slotdatas =
       stationData[0] === undefined || stationData[0].slots === undefined
         ? []
@@ -51,8 +55,8 @@ class Vacancy extends React.Component {
 
     const slotSizeY = CONTAINER_WIDGET_HEIGHT / stationRowNumber - 2;
     const slotSizeX = slotSizeY * 0.75 - 2;
-    const paddingX = slotSizeX / 2;
-    const paddingY = slotSizeY / 3;
+    const paddingX = slotSizeX * 0.5;
+    const paddingY = slotSizeY * 0.25;
     const ACTUAL_CONTAINER_WIDTH = CONTAINER_WIDGET_WIDTH - slotSizeX;
     const ACTUAL_CONTAINER_HEIGHT = CONTAINER_WIDGET_HEIGHT - slotSizeY * 0.75;
 
@@ -67,12 +71,11 @@ class Vacancy extends React.Component {
         <Row>
           <Col>
             <Widget
-              title={
-                <h5>
-                  {parkinglotname}
-                  <span className="fw-semi-bold"></span>
-                </h5>
-              }
+              style={{
+                backgroundImage: `url(${stationBG})`,
+                width: `${CONTAINER_WIDGET_WIDTH}px`,
+                height: `${CONTAINER_WIDGET_HEIGHT}px`,
+              }}
               bodyClass={s.mainTableWidget}
             >
               {slotdatas.map((s) => (
