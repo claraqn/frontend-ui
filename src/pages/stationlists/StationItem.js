@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Progress, Button } from 'reactstrap';
 import LinksGroup from '../../components/Sidebar/LinksGroup/LinksGroup';
 import s from './StationList.module.scss';
@@ -55,7 +56,14 @@ class StationItem extends Component {
           <span className="text-muted fw-semi-bold">{vacancy}</span> 개
         </td>
         {/* TODO:Fix */}
-        <td className="text-muted">{'미등록'}</td>
+        <td className="text-muted">
+          {'미등록'}
+          {/* <Button
+            outline
+            className={s.button}
+            // onClick={this.handleClick}
+          ></Button> */}
+        </td>
         <td className="width-150">
           {/* TODO:Fix */}
           <Progress
@@ -63,20 +71,15 @@ class StationItem extends Component {
             value={(1 - vacancy / overallSpaces) * 100}
             className="progress-sm mb-xs"
           />
-          <Button
-            outline
-            className={s.button}
-            // href={`/app/vacancy?id=${id}`}
-            // onClick={this.handleClick}
+          <NavLink
+            to={`/app/tables/vacancy?id=${id}`}
+            exact
+            target={this.props.target}
           >
-            <LinksGroup
-              link={`/app/vacancy?id=${id}`}
-              // link={'/app/vacancy' + ' ' + row.description}
-              header="주차장 빈자리 확인"
-              className={s.link}
-              //index={name}
-            ></LinksGroup>
-          </Button>
+            <Button outline className={s.button}>
+              주차장 빈자리 확인
+            </Button>
+          </NavLink>
         </td>
       </tr>
     );

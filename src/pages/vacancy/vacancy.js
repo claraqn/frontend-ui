@@ -4,6 +4,9 @@ import { Row, Col } from 'reactstrap';
 import Widget from '../../components/Widget';
 import s from './vacancy.module.scss';
 import uuid from 'uuid/v4';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as apiActions from '../../actions/getAPI';
 import Slot from './Slot';
 import {
   CONTAINER_WIDGET_HEIGHT,
@@ -11,141 +14,82 @@ import {
 } from './ConstValues.js';
 
 class Vacancy extends React.Component {
-  constructor(props) {
-    super(props);
-    var query = props.location.search.split('=');
-    this.state = {
-      parkinglotname: '공대 4호관 주차장',
-      vacancynumber: 4,
-      id: query[1],
-      stationColumnNumber: 6,
-      stationRowNumber: 4,
-      slotdatas: [
-        {
-          slotID: 1,
-          camID: 1,
-          posX: 0,
-          posY: 0,
-          isEmpty: true,
-          slotType: 'vertical',
-        },
-        {
-          slotID: 2,
-          camID: 1,
-          posX: 1,
-          posY: 0,
-          isEmpty: false,
-          slotType: 'vertical',
-        },
-        {
-          slotID: 3,
-          camID: 1,
-          posX: 5,
-          posY: 3,
-          isEmpty: false,
-          slotType: 'vertical',
-        },
-        {
-          slotID: 4,
-          camID: 1,
-          posX: 3,
-          posY: 0,
-          isEmpty: false,
-          slotType: 'vertical',
-        },
-        {
-          slotID: 5,
-          camID: 2,
-          posX: 5,
-          posY: 0,
-          isEmpty: true,
-          slotType: 'vertical',
-        },
-        {
-          slotID: 6,
-          camID: 3,
-          posX: 0,
-          posY: 3,
-          isEmpty: true,
-          slotType: 'vertical',
-        },
-        {
-          slotID: 7,
-          camID: 3,
-          posX: 1,
-          posY: 3,
-          isEmpty: false,
-          slotType: 'vertical',
-        },
-        {
-          slotID: 8,
-          camID: 3,
-          posX: 2,
-          posY: 3,
-          isEmpty: false,
-          slotType: 'vertical',
-        },
-        {
-          slotID: 9,
-          camID: 3,
-          posX: 3,
-          posY: 3,
-          isEmpty: true,
-          slotType: 'vertical',
-        },
-        {
-          slotID: 10,
-          camID: 4,
-          posX: 4,
-          posY: 3,
-          isEmpty: false,
-          slotType: 'vertical',
-        },
-      ],
-    };
+  componentDidMount() {
+    const query = this.props.location.search.split('=');
+    const stationID = query[1];
+
+    const { APIActions } = this.props;
+    APIActions.getStationData(stationID);
   }
 
   render() {
-    const slotSizeY = CONTAINER_WIDGET_HEIGHT / this.state.stationRowNumber - 2;
+    const { stationData, error, loading } = this.props;
+
+    const parkinglotname =
+      stationData[0] === undefined ||
+      stationData[0].parkinglotname === undefined
+        ? ''
+        : stationData[0].parkinglotname;
+    const vacancynumber =
+      stationData[0] === undefined || stationData[0].vacancynumber === undefined
+        ? 0
+        : stationData[0].vacancynumber;
+    const stationColumnNumber =
+      stationData[0] === undefined ||
+      stationData[0].stationColumnNumber === undefined
+        ? 0
+        : stationData[0].stationColumnNumber;
+    const stationRowNumber =
+      stationData[0] === undefined ||
+      stationData[0].stationRowNumber === undefined
+        ? 0
+        : stationData[0].stationRowNumber;
+    const stationBG =
+      stationData[0] === undefined || stationData[0].stationBG === undefined
+        ? 0
+        : stationData[0].stationBG;
+    const slotdatas =
+      stationData[0] === undefined || stationData[0].slots === undefined
+        ? []
+        : stationData[0].slots;
+
+    const slotSizeY = CONTAINER_WIDGET_HEIGHT / stationRowNumber - 2;
     const slotSizeX = slotSizeY * 0.75 - 2;
-    const paddingX = slotSizeX / 2;
-    const paddingY = slotSizeY / 3;
+    const paddingX = slotSizeX * 0.5;
+    const paddingY = slotSizeY * 0.25;
     const ACTUAL_CONTAINER_WIDTH = CONTAINER_WIDGET_WIDTH - slotSizeX;
     const ACTUAL_CONTAINER_HEIGHT = CONTAINER_WIDGET_HEIGHT - slotSizeY * 0.75;
 
     return (
       <div className={s.root}>
         <h1 className="page-title">
-          <span className="fw-semi-bold">{this.state.parkinglotname}</span>
+          <span className="fw-semi-bold">{parkinglotname}</span>
           <span> 의 빈자리 개수 : </span>
-          <span className="fw-semi-bold">{this.state.vacancynumber}</span>
+          <span className="fw-semi-bold">{vacancynumber}</span>
           <span> 개</span>
         </h1>
         <Row>
           <Col>
             <Widget
-              title={
-                <h5>
-                  제주대학교 공대4호관 주차장
-                  <span className="fw-semi-bold"></span>
-                </h5>
-              }
+              style={{
+                backgroundImage: `url(${stationBG})`,
+                width: `${CONTAINER_WIDGET_WIDTH}px`,
+                height: `${CONTAINER_WIDGET_HEIGHT}px`,
+              }}
               bodyClass={s.mainTableWidget}
             >
-              {this.state.slotdatas.map((s) => (
+              {slotdatas.map((s) => (
                 <Slot
-                  key={uuid()}
+                  key={`${s.slotID}${uuid()}${uuid()}`}
                   slotID={s.slotID}
                   camID={s.camID}
                   posX={
                     paddingX +
-                    (ACTUAL_CONTAINER_WIDTH / this.state.stationColumnNumber) *
-                      s.posX
+                    (ACTUAL_CONTAINER_WIDTH / stationColumnNumber) * s.posX
                   }
                   posY={
                     paddingY +
-                    (ACTUAL_CONTAINER_HEIGHT / this.state.stationRowNumber) *
-                      s.posY
+                    (ACTUAL_CONTAINER_HEIGHT / stationRowNumber) * s.posY
                   }
                   sizeX={slotSizeX}
                   sizeY={slotSizeY}
@@ -161,4 +105,13 @@ class Vacancy extends React.Component {
   }
 }
 
-export default Vacancy;
+export default connect(
+  (state) => ({
+    stationData: state.apis.data,
+    loading: state.apis.pending,
+    error: state.apis.error,
+  }),
+  (dispatch) => ({
+    APIActions: bindActionCreators(apiActions, dispatch),
+  }),
+)(Vacancy);

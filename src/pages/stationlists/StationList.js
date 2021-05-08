@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col, Table } from 'reactstrap';
 import Widget from '../../components/Widget';
 import s from './StationList.module.scss';
+import uuid from 'uuid/v4';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as apiActions from '../../actions/getAPI';
@@ -50,7 +51,7 @@ class StationLists extends React.Component {
                 <tbody>
                   {stations.map((station) => (
                     <StationItem
-                      key={station.id}
+                      key={`${station.id}${uuid()}`}
                       {...station}
                       // onClick={console.log(station.id)}
                     ></StationItem>
@@ -73,5 +74,5 @@ export default connect(
   }),
   (dispatch) => ({
     APIActions: bindActionCreators(apiActions, dispatch),
-  })
+  }),
 )(StationLists);
