@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { Button } from 'reactstrap';
 import s from './vacancy.module.scss';
-
 class Slot extends Component {
   render() {
     return (
-      <div
+      <Button
         className={
           `${s.slot}` +
           (this.props.slotType === 'horizontal'
@@ -24,7 +24,8 @@ class Slot extends Component {
           width: this.props.sizeX,
           height: this.props.sizeY,
         }}
-      ></div>
+        onClick={this.props.onClick}
+      ></Button>
     );
   }
 }
