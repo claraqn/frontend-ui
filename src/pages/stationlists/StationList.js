@@ -53,7 +53,6 @@ class StationLists extends React.Component {
                     <StationItem
                       key={`${station.id}${uuid()}`}
                       {...station}
-                      // onClick={console.log(station.id)}
                     ></StationItem>
                   ))}
                 </tbody>

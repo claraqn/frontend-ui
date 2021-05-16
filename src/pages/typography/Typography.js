@@ -6,8 +6,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as apiActions from '../../actions/getAPI';
 import StationItem from '../stationlists/StationItem';
+import { withCookies, Cookies } from 'react-cookie';
 
 class Typography extends React.Component {
+  getCookie(name) {
+    let matches = document.cookie.match(
+      new RegExp(
+        '(?:^|; )' +
+          name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') +
+          '=([^;]*)',
+      ),
+    );
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+
   componentDidMount() {
     const { APIActions } = this.props;
     APIActions.getStations();
@@ -15,6 +27,7 @@ class Typography extends React.Component {
 
   render() {
     const { stations, error, loading } = this.props;
+    const favorites = this.getCookie('favorites');
 
     return (
       <div className={s.root}>
@@ -50,16 +63,12 @@ class Typography extends React.Component {
                 </thead>
                 <tbody>
                   {stations.map((station) =>
-                    // station.favorite === '등록'
-                    station.id === 1 ? (
-                      <StationItem
-                        key={station.id}
-                        {...station}
-                        // onClick={console.log(station.id)}
-                      ></StationItem>
+                    favorites !== undefined &&
+                    favorites.indexOf(station.id) > -1 ? (
+                      <StationItem key={station.id} {...station}></StationItem>
                     ) : (
                       ''
-                    )
+                    ),
                   )}
                 </tbody>
               </Table>
@@ -71,7 +80,8 @@ class Typography extends React.Component {
   }
 }
 
-export default connect(
+export default // withCookies(
+connect(
   (state) => ({
     stations: state.apis.data,
     loading: state.apis.pending,
@@ -79,5 +89,6 @@ export default connect(
   }),
   (dispatch) => ({
     APIActions: bindActionCreators(apiActions, dispatch),
-  })
+  }),
 )(Typography);
+// )
