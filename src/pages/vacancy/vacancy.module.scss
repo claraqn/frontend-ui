@@ -1,10 +1,14 @@
 @import '../../styles/app';
 
 .root {
+  position: absolute;
 }
 
 .mainTableWidget {
   position: relative;
+  @media (max-width: 576px) {
+    transform: translateX(-22%) translateY(20%) rotate(270deg);
+  }
 }
 
 .small {
@@ -30,4 +34,12 @@
   &.isEmpty {
     background-color: white;
   }
+}
+
+.photomodal {
+  width: 800px;
+  height: 600px;
+  top: 30%;
+  right: 50%;
+  text-align: center;
 }

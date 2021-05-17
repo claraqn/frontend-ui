@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 
 import Widget from '../../components/Widget';
 import s from './vacancy.module.scss';
@@ -12,8 +12,17 @@ import {
   CONTAINER_WIDGET_HEIGHT,
   CONTAINER_WIDGET_WIDTH,
 } from './ConstValues.js';
+import PhotoPopup from './PhotoPopup.js';
 
 class Vacancy extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalShow: false,
+      currentPhoto: undefined,
+    };
+  }
+
   componentDidMount() {
     const query = this.props.location.search.split('=');
     const stationID = query[1];
@@ -61,13 +70,14 @@ class Vacancy extends React.Component {
     const ACTUAL_CONTAINER_HEIGHT = CONTAINER_WIDGET_HEIGHT - slotSizeY * 0.75;
 
     return (
-      <div className={s.root}>
+      <Container className={s.root}>
         <h1 className="page-title">
           <span className="fw-semi-bold">{parkinglotname}</span>
           <span> 의 빈자리 개수 : </span>
           <span className="fw-semi-bold">{vacancynumber}</span>
           <span> 개</span>
         </h1>
+
         <Row>
           <Col>
             <Widget
@@ -76,13 +86,12 @@ class Vacancy extends React.Component {
                 width: `${CONTAINER_WIDGET_WIDTH}px`,
                 height: `${CONTAINER_WIDGET_HEIGHT}px`,
               }}
-              bodyClass={s.mainTableWidget}
+              className={s.mainTableWidget}
             >
               {slotdatas.map((s) => (
                 <Slot
                   key={`${s.slotID}${uuid()}${uuid()}`}
                   slotID={s.slotID}
-                  camID={s.camID}
                   posX={
                     paddingX +
                     (ACTUAL_CONTAINER_WIDTH / stationColumnNumber) * s.posX
@@ -95,12 +104,30 @@ class Vacancy extends React.Component {
                   sizeY={slotSizeY}
                   isEmpty={s.isEmpty}
                   slotType={s.slotType}
+                  onClick={() =>
+                    this.setState((state) => {
+                      return {
+                        modalShow: true,
+                        currentPhoto: s.photo,
+                      };
+                    })
+                  }
                 />
               ))}
             </Widget>
           </Col>
         </Row>
-      </div>
+
+        <PhotoPopup
+          isOpen={this.state.modalShow}
+          toggle={() =>
+            this.setState((state) => {
+              return { modalShow: false };
+            })
+          }
+          currentPhoto={this.state.currentPhoto}
+        />
+      </Container>
     );
   }
 }
