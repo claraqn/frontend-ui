@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Container } from 'reactstrap';
+import { Row, Col, Container, Button } from 'reactstrap';
 
 import Widget from '../../components/Widget';
 import s from './vacancy.module.scss';
@@ -19,7 +19,7 @@ class Vacancy extends React.Component {
     super(props);
     this.state = {
       modalShow: false,
-      currentPhoto: undefined,
+      currentphoto: undefined,
     };
   }
 
@@ -29,6 +29,10 @@ class Vacancy extends React.Component {
 
     const { APIActions } = this.props;
     APIActions.getStationData(stationID);
+  }
+
+  refreshVacany() {
+    this.props.APIActions.getStationData();
   }
 
   render() {
@@ -88,6 +92,12 @@ class Vacancy extends React.Component {
               }}
               className={s.mainTableWidget}
             >
+              <Button
+                outline
+                className={s.button}
+                onClick={this.refreshVacany.bind(this)}
+              ></Button>
+
               {slotdatas.map((s) => (
                 <Slot
                   key={`${s.slotID}${uuid()}${uuid()}`}
@@ -108,7 +118,7 @@ class Vacancy extends React.Component {
                     this.setState((state) => {
                       return {
                         modalShow: true,
-                        currentPhoto: s.photo,
+                        currentphoto: s.photo,
                       };
                     })
                   }
@@ -125,7 +135,7 @@ class Vacancy extends React.Component {
               return { modalShow: false };
             })
           }
-          currentPhoto={this.state.currentPhoto}
+          currentphoto={this.state.currentphoto}
         />
       </Container>
     );

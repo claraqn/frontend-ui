@@ -1,14 +1,17 @@
 import React from 'react';
-import { Row, Col, Table } from 'reactstrap';
+import { Row, Col, Table, Button } from 'reactstrap';
 import Widget from '../../components/Widget';
 import s from './Typography.module.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as apiActions from '../../actions/getAPI';
 import StationItem from '../stationlists/StationItem';
-import { withCookies, Cookies } from 'react-cookie';
 
 class Typography extends React.Component {
+  refreshStationList() {
+    this.props.APIActions.getStations();
+  }
+
   getCookie(name) {
     const cookieValue = document.cookie
       .split('; ')
@@ -48,6 +51,14 @@ class Typography extends React.Component {
               }
               bodyClass={s.mainTableWidget}
             >
+              <Button
+                outline
+                className={s.button}
+                onClick={this.refreshStationList.bind(this)}
+              >
+                Refresh
+              </Button>
+
               <Table striped>
                 <thead>
                   <tr className="fs-sm">

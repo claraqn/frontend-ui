@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Table } from 'reactstrap';
+import { Row, Col, Table, Button } from 'reactstrap';
 import Widget from '../../components/Widget';
 import s from './StationList.module.scss';
 import uuid from 'uuid/v4';
@@ -9,6 +9,10 @@ import * as apiActions from '../../actions/getAPI';
 import StationItem from './StationItem';
 
 class StationLists extends React.Component {
+  refreshStationList() {
+    this.props.APIActions.getStations();
+  }
+
   componentDidMount() {
     const { APIActions } = this.props;
     APIActions.getStations();
@@ -23,6 +27,7 @@ class StationLists extends React.Component {
           Parking Lot <span className="fw-semi-bold">List</span>
           <small className={s.small}> 주차장 목록을 확인합니다.</small>
         </h1>
+
         <Row>
           <Col>
             <Widget
@@ -34,6 +39,13 @@ class StationLists extends React.Component {
               }
               bodyClass={s.mainTableWidget}
             >
+              <Button
+                outline
+                className={s.button}
+                onClick={this.refreshStationList.bind(this)}
+              >
+                Refresh
+              </Button>
               <Table striped className={s.table}>
                 <thead>
                   <tr className="fs-sm">
