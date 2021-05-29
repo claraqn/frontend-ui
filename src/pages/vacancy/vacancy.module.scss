@@ -49,3 +49,10 @@
   font-size: 0.2em;
   color: blue;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
