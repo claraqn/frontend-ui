@@ -10,14 +10,15 @@ import { withCookies, Cookies } from 'react-cookie';
 
 class Typography extends React.Component {
   getCookie(name) {
-    let matches = document.cookie.match(
-      new RegExp(
-        '(?:^|; )' +
-          name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') +
-          '=([^;]*)',
-      ),
-    );
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+    const cookieValue = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith(name));
+    if (cookieValue === undefined) {
+      document.cookie = `${name}=${JSON.stringify(new Array())}; path=/;`;
+      return [];
+    } else {
+      return JSON.parse(decodeURIComponent(cookieValue.split('=')[1]));
+    }
   }
 
   componentDidMount() {

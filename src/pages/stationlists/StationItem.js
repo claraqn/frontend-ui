@@ -8,13 +8,12 @@ class StationItem extends Component {
   addToCookie(id) {
     let favs = this.props.cookies.get('favorites');
     const index = favs.indexOf(id);
-    if (index <= -1) {
+    if (index === -1) {
       favs.push(id);
-      this.props.cookies.set('favorites', favs, {
+      this.props.cookies.set('favorites', JSON.stringify(favs), {
         path: '/',
       });
     }
-    console.log(this.props.cookies.get('favorites'));
   }
 
   removeFromCookie(id) {
@@ -22,11 +21,10 @@ class StationItem extends Component {
     const index = favs.indexOf(id);
     if (index > -1) {
       favs.splice(index, 1);
-      this.props.cookies.set('favorites', favs, {
+      this.props.cookies.set('favorites', JSON.stringify(favs), {
         path: '/',
       });
     }
-    console.log(this.props.cookies.get('favorites'));
   }
 
   render() {
