@@ -12,7 +12,7 @@ class PhotoPopup extends Component {
             <Col md="12">
               <div className="d-flex justify-content-center">
                 <img
-                  src={this.props.currentPhoto}
+                  src={this.props.currentphoto}
                   alt="Parkinglot slot"
                   className="img-fluid"
                 />

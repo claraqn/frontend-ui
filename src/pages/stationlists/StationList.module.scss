@@ -32,6 +32,25 @@
   color: blue;
 }
 
+.favorite {
+  background-color: yellow;
+}
+
+.nonfavorite {
+  background-color: black;
+}
+
+.nonactive {
+  display: none;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+
 // @media (max-width: 690px) {
 //   .root {
 //     -ms-transform: rotate(90deg); /* IE 9 */
